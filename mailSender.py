@@ -9,10 +9,10 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
 def main():
-    parser = argparse.ArgumentParser(description="HTML mail template whcih will send.")
+    parser = argparse.ArgumentParser(description="HTML mail sender.")
     parser.add_argument('-mf','--message_file', help="HTML mail template.")
     parser.add_argument('-r','--recipient', help="Recipient(s) emaill address. You can use comma (,) for multiple recipients.")
-    parser.add_argument('-tm', '--test_mode', help="If you want to test script without any CC you can run test mode.")
+    parser.add_argument('-tm', '--test_mode', help="If you want to test script without any CC you can run test mode.", action='store_true')
     parser.add_argument('-img', '--image', help="Image(s) in HTML. You can use comma seperator. USAGE: -img image.png", )
     parser.add_argument('-t', '--type', help="Type of email. AVAIBLE: \{leak, ransomware_digest, vulnerability_digest\}", required=True)
     args = parser.parse_args()
@@ -61,9 +61,10 @@ def main():
         img_part.add_header('Content-ID', "<{}>".format(args.image))
         #Attach img
         msg.attach(img_part)
-
+    print("Mail sending...")
     smtp.sendmail(msg_from, recipients.split(","), msg.as_string())
     smtp.quit()
+    print("Mail sended to {}.".format(recipients))
 
 
 def connect():
