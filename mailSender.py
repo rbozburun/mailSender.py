@@ -25,16 +25,16 @@ def main():
     msg_from = ""
 
     if args.type == "leak":
-        msg_from = "\"Intel\" Report <intelreport@threatmonit.io>"
-        subject = "Cyber Threat Intelligence Report"
+        msg_from = "Example <example@example.com>"
+        subject = "Report"
 
     elif args.type == "ransomware_digest":
-        msg_from = "\"Ransomware Digest\" <intelreport@threatmonit.io>"
-        subject = "ThreatMonIT Weekly Ransomware Digest Report"
+        msg_from = "Example <example@example.com>"
+        subject = "Report"
 
     elif args.type == "vulnerability_digest":
-        msg_from = "\"Vulnerability Digest\" <intelreport@threatmonit.io>"
-        subject = "ThreatMonIT Weekly Vulnerability Digest Report"
+        msg_from = "Example <example@example.com>"
+        subject = "Report"
     
     else:
         print("Wrong type !!! Exiting.")
@@ -48,7 +48,7 @@ def main():
     if args.test_mode is not None:
         print("Script running on test mode, there is no  user in CC.")
     else:    
-        msg["CC"] = "archive@infinitumit.com.tr"
+        msg["CC"] = "examlecc@example.com"
 
     #Create Message body
     text = MIMEText(open(args.message_file, 'r', encoding='utf8').read(), 'html')
