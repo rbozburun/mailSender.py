@@ -14,7 +14,7 @@ def main():
     parser.add_argument('-r','--recipient', help="Recipient(s) emaill address. You can use comma (,) for multiple recipients.")
     parser.add_argument('-tm', '--test_mode', help="If you want to test script without any CC you can run test mode.", action='store_true')
     parser.add_argument('-img', '--image', help="Image(s) in HTML. You can use comma seperator. USAGE: -img image.png", )
-    parser.add_argument('-t', '--type', help="Type of email. AVAIBLE: \{leak, ransomware_digest, vulnerability_digest\}", required=True)
+    parser.add_argument('-t', '--type', help="Type of email. AVAIBLE: \{leak, ransom, vulnerability\}", required=True)
     args = parser.parse_args()
 
     recipients = args.recipient
@@ -28,11 +28,11 @@ def main():
         msg_from = "Example <example@example.com>"
         subject = "Report"
 
-    elif args.type == "ransomware_digest":
+    elif args.type == "ransom":
         msg_from = "Example <example@example.com>"
         subject = "Report"
 
-    elif args.type == "vulnerability_digest":
+    elif args.type == "vulnerability":
         msg_from = "Example <example@example.com>"
         subject = "Report"
     
